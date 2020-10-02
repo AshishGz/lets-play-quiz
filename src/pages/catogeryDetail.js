@@ -5,7 +5,9 @@ import StartQuizIcon from '@material-ui/icons/PlayArrow'
 import DiffcultIcon from '@material-ui/icons/Label'
 import Card from "@material-ui/core/Card/Card";
 import {catogery_json} from "../utils/catogreyJson";
+import { useHistory } from "react-router-dom";
 export default function CatogeryDetail() {
+    let history=useHistory();
     let { id } = useParams();
     const [lavel,setlavel]=useState('any');
     const [numberOfQuestion,setNumberOfQuestion]=useState(10);
@@ -54,6 +56,10 @@ export default function CatogeryDetail() {
             <Button
                 variant="contained"
                 color="secondary"
+                onClick={()=>{
+                     sessionStorage.removeItem('_current_quiz');
+                    history.push('/play')
+                }}
                 style={{background:'#18551b',margin:'20px auto'}}
                 startIcon={<StartQuizIcon />}
             >

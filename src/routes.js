@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import CatogeryDetail from "./pages/catogeryDetail";
+import QuizPage from "./pages/quizPage";
 export default function Routes() {
     return(
         <div>
@@ -16,6 +17,9 @@ export default function Routes() {
                     </Route>
                     <Route path="/category/:id" exact>
                         <CatogeryDetail />
+                    </Route>
+                    <Route path="/play" exact>
+                        <QuizPage/>
                     </Route>
                 </Switch>
         </Router>
