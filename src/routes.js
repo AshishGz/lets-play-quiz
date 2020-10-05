@@ -7,6 +7,7 @@ import {
 import HomePage from "./pages/homePage";
 import CatogeryDetail from "./pages/catogeryDetail";
 import QuizPage from "./pages/quizPage";
+import QuizResult from "./pages/quizResult";
 export default function Routes() {
     return(
         <div>
@@ -20,6 +21,9 @@ export default function Routes() {
                     </Route>
                     <Route path="/play" exact>
                         <QuizPage/>
+                    </Route>
+                    <Route path="/result" exact>
+                        <QuizResult/>
                     </Route>
                 </Switch>
         </Router>

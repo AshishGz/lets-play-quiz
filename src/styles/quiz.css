@@ -32,3 +32,31 @@
     justify-content: space-between;
 
  }
+.circle{
+    margin: 30px auto;
+    background-image: linear-gradient(red, yellow);
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+
+}
+.circle div{
+    position: absolute;
+    color: #ffffff;
+    top: 34%;
+    right: 33%;
+    font-size: 50px;
+    font-weight: 900;
+}
+#quiz h1{
+    text-align: center;
+    margin: auto;
+    display: block;
+    font-weight: 900;
+    font-size: 72px;
+    background: -webkit-linear-gradient(#e80808, #FFC107);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

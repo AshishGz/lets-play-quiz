@@ -7,8 +7,9 @@ import Button from "@material-ui/core/Button/Button";
 import PrevIocn from "@material-ui/icons/ArrowLeft";
 import NexIocn from "@material-ui/icons/ArrowRight";
 import FinishIocn from "@material-ui/icons/CancelScheduleSend";
+import { useHistory } from "react-router-dom";
 export default function QuizPage() {
-
+    let history=useHistory();
     const [quizData,setQuizzData]=useState([]);
     const [isLoading,setIsLoading]=useState(true);
     const [answerChange,SetAnswerChange]=useState(true);
@@ -82,8 +83,18 @@ export default function QuizPage() {
         quizData[questionNo].userAnswer=ans;
         setQuizzData(quizData);
         SetAnswerChange(!answerChange);
+    }
 
-
+    function onFinishQuiz() {
+        let count=0;
+        quizData.forEach(function (quiz) {
+            if(quiz.correct_answer==quiz.userAnswer){
+                count++
+            }
+        });
+        history.push('/result',{"result":(count*10),"isPass":count>4,"quizData":quizData});
+        console.log('quiz');
+        console.log(count);
     }
 
 
@@ -107,6 +118,7 @@ export default function QuizPage() {
                         <Button
                             variant="contained" color="primary" disableElevation
                             startIcon={<FinishIocn />}
+                            onClick={onFinishQuiz}
                         >
                             Finish Quiz
                         </Button>
