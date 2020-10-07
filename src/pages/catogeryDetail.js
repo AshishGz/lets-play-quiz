@@ -6,12 +6,16 @@ import DiffcultIcon from '@material-ui/icons/Label'
 import Card from "@material-ui/core/Card/Card";
 import {catogery_json} from "../utils/catogreyJson";
 import { useHistory } from "react-router-dom";
+import DiffucltyLevelSelect from "../component/diffucltyLevelSelect";
+import NoOFQuestions from "../component/noOfQuestions";
 export default function CatogeryDetail() {
     let history=useHistory();
     let { id } = useParams();
     const [lavel,setlavel]=useState('any');
     const [numberOfQuestion,setNumberOfQuestion]=useState(10);
     const [catogery,setCatogery]=useState({"name":"","id":""});
+    const [selectDiffultLevel,setSelectDiffultLevel]=useState(false);
+    const [selectNoOfQuestions,setSelectNoOfQuestions]=useState(false);
 
     useEffect(()=>{
         let cat=catogery_json.filter((value)=>{
@@ -19,6 +23,15 @@ export default function CatogeryDetail() {
         });
         setCatogery(cat[0]);
     },[true]);
+
+    function handleLevel(level) {
+        setlavel(level);
+        console.log(level)
+    }
+    function handleNoOfQuestions(no) {
+        setNumberOfQuestion(no);
+        console.log(no)
+    }
 
 
     return(
@@ -37,6 +50,7 @@ export default function CatogeryDetail() {
 
 
                             <Card
+                                onClick={()=>setSelectNoOfQuestions(true)}
                                 style={{padding:10,margin:'10px 10px 10px 10px',textAlign:'center',cursor:'pointer'}}>
 
                                 <div style={{fontSize:22,fontWeight:600}}>{numberOfQuestion}</div>
@@ -46,6 +60,7 @@ export default function CatogeryDetail() {
 
 
                         <Card
+                            onClick={()=>setSelectDiffultLevel(true)}
                             style={{padding:10,margin:'10px 10px 10px 10px',textAlign:'center',cursor:'pointer'}}>
                             <div><DiffcultIcon/></div>
                             <div style={{fontSize:22,fontWeight:600}}>{lavel}</div>
@@ -58,13 +73,21 @@ export default function CatogeryDetail() {
                 color="secondary"
                 onClick={()=>{
                      sessionStorage.removeItem('_current_quiz');
-                    history.push('/play')
+                    history.push('/play/'+id+'/'+lavel.toLocaleLowerCase()+'/'+numberOfQuestion)
                 }}
                 style={{background:'#18551b',margin:'20px auto'}}
                 startIcon={<StartQuizIcon />}
             >
                 Start Quiz
             </Button>
+            <DiffucltyLevelSelect open={selectDiffultLevel} onDialougeClose={()=>setSelectDiffultLevel(false)}
+
+            onSetLevel={handleLevel}
+            />
+            <NoOFQuestions open={selectNoOfQuestions} onDialougeClose={()=>setSelectNoOfQuestions(false)}
+
+            onSetQuestions={handleNoOfQuestions}
+            />
 
         </div>
     )

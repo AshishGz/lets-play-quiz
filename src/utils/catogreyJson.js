@@ -25,3 +25,10 @@ export const catogery_json=[
     {"background":"#e3f9ac","id":"31","name":"Entertainment: Japanese Anime &amp; Manga"},
     {"background":"#71f90a","id":"32","name":"Entertainment: Cartoon &amp; Animations"}
 ];
+
+export const LEVEL_JSON=[
+    {"name":"Easy","lavel":"E","color":"#3225ee","value":"easy"},
+    {"name":"Medium","lavel":"M","color":"#18551b","value":"medium"},
+    {"name":"Hard","lavel":"H","color":"#540722","value":"hard"},
+    {"name":"Any","lavel":"A","color":"#5f550a","value":"any"}
+]

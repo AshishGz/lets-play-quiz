@@ -7,19 +7,25 @@ import Button from "@material-ui/core/Button/Button";
 import PrevIocn from "@material-ui/icons/ArrowLeft";
 import NexIocn from "@material-ui/icons/ArrowRight";
 import FinishIocn from "@material-ui/icons/CancelScheduleSend";
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
+import {catogery_json} from "../utils/catogreyJson";
 export default function QuizPage() {
     let history=useHistory();
+    let { catogeryId,level,number }=useParams();
     const [quizData,setQuizzData]=useState([]);
     const [isLoading,setIsLoading]=useState(true);
     const [answerChange,SetAnswerChange]=useState(true);
     const [questionNo,setQuestionNo]=useState(0);
-
+const [catogeryName,setCatogery]=useState('');
 
 
 
     useEffect(()=>
     {
+        let cat=catogery_json.filter((value)=>{
+            return value.id==catogeryId;
+        });
+        setCatogery(cat[0]);
      getQuizata();
     },true);
 
@@ -29,7 +35,11 @@ export default function QuizPage() {
             setQuizzData(JSON.parse(quizData));
             setIsLoading(false);
         }else {
-            axios.get(API_BASE_URL + '?amount=10')
+            let url=API_BASE_URL + '?amount='+number+'&category='+catogeryId;
+            if(level!='any'){
+                url=url+'&difficulty='+level;
+            }
+            axios.get(url)
                 .then(function (response) {
                     // handle success
                     createFinalQuiz(response.data.results);
@@ -92,7 +102,8 @@ export default function QuizPage() {
                 count++
             }
         });
-        history.push('/result',{"result":(count*10),"isPass":count>4,"quizData":quizData});
+        history.push('/result',
+            {"result":(count*10),"isPass":count>4,"quizData":quizData,"level":level,"questions":quizData.length,"catogery":catogeryName});
         console.log('quiz');
         console.log(count);
     }

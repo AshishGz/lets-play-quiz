@@ -19,7 +19,7 @@ export default function Routes() {
                     <Route path="/category/:id" exact>
                         <CatogeryDetail />
                     </Route>
-                    <Route path="/play" exact>
+                    <Route path="/play/:catogeryId/:level/:number" exact>
                         <QuizPage/>
                     </Route>
                     <Route path="/result" exact>

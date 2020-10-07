@@ -5,12 +5,25 @@ import StartQuizIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ViewResult from "../component/viewResult";
+import * as firebase from "firebase";
 export default function QuizResult() {
+    const firestore = firebase.firestore();
     let history=useHistory();
     let [result,setResult]=useState(0);
     let [viewResult,setViewResult]=useState(false);
 
     useEffect(()=>{
+        let user_nmae=localStorage.getItem('_user_name')?localStorage.getItem('_user_name'):''
+
+        let data=history.location.state;
+        console.log(data);
+        firestore.collection("quiz_result").add({
+            Score:data.result ,
+            catogery: data.catogery.name,
+            level:data.level,
+            no_of_question:data.questions,
+            user_name:user_nmae
+        });
         setResult(history.location.state.result);
     },[true]);
     return (
