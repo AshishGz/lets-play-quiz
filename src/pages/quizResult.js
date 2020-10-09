@@ -16,7 +16,6 @@ export default function QuizResult() {
         let user_nmae=localStorage.getItem('_user_name')?localStorage.getItem('_user_name'):''
 
         let data=history.location.state;
-        console.log(data);
         firestore.collection("quiz_result").add({
             Score:data.result ,
             catogery: data.catogery.name,

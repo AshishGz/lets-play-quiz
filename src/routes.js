@@ -8,6 +8,8 @@ import HomePage from "./pages/homePage";
 import CatogeryDetail from "./pages/catogeryDetail";
 import QuizPage from "./pages/quizPage";
 import QuizResult from "./pages/quizResult";
+import PlayersList from "./component/playesList";
+import SignIn from "./pages/signIn";
 export default function Routes() {
     return(
         <div>
@@ -24,6 +26,9 @@ export default function Routes() {
                     </Route>
                     <Route path="/result" exact>
                         <QuizResult/>
+                    </Route>
+                    <Route path="/signin" exact>
+                        <SignIn/>
                     </Route>
                 </Switch>
         </Router>

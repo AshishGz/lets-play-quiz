@@ -19,7 +19,7 @@ function App() {
             measurementId: "G-QVGW1FT88Y"
         };
         firebase.initializeApp(firebaseConfig);
-    },true)
+    },[])
     return (
         <div>
             <Header/>
