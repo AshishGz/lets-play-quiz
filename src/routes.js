@@ -10,6 +10,9 @@ import QuizPage from "./pages/quizPage";
 import QuizResult from "./pages/quizResult";
 import PlayersList from "./component/playesList";
 import SignIn from "./pages/signIn";
+import ManagePoll from "./pages/managePoll";
+import PollList from "./pages/poll_list";
+import PlayPoll from "./pages/play_pool";
 export default function Routes() {
     return(
         <div>
@@ -29,6 +32,14 @@ export default function Routes() {
                     </Route>
                     <Route path="/signin" exact>
                         <SignIn/>
+                    </Route>
+                    <Route path="/poll/manage" exact>
+                        <ManagePoll/>
+                    </Route>
+                    <Route path="/poll/list" exact>
+                        <PollList/>
+                    </Route> <Route path="/playPoll/:id" exact>
+                        <PlayPoll/>
                     </Route>
                 </Switch>
         </Router>
