@@ -7,6 +7,12 @@
     border-radius: 40px !important;
 
 }
+.option{
+    background: #ffffff !important;
+}
+.option:hover{
+    background: #12f57e !important;
+}
 .answer:hover{
     opacity: 1;
 }

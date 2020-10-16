@@ -35,9 +35,10 @@ const [catogeryName,setCatogery]=useState('');
             setQuizzData(JSON.parse(quizData));
             setIsLoading(false);
         }else {
-            let url=API_BASE_URL + '?amount='+number+'&category='+catogeryId;
+            let url=API_BASE_URL + '?amount='+number
+            console.log(url);
             if(level!='any'){
-                url=url+'&difficulty='+level;
+                url=url+'&difficulty='+level+'&category='+catogeryId;;
             }
             axios.get(url)
                 .then(function (response) {

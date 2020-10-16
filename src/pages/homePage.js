@@ -72,6 +72,14 @@ export default function HomePage() {
                     </Button>
                 </div>
             }
+            <Card style={{margin:20,padding:20,background:'#f0f8ff'}}>
+                <p>We have New Feature of Polling. Give Your vote.</p>
+                <Button variant="contained" color="primary" style={{marginLeft: 20}}
+                        onClick={() => history.push('/poll/list')}
+                >
+                    Cast Your Vote
+                </Button>
+            </Card>
             <QuizCatogery/>
 <div style={{background:'#f5f5f5',padding:20}}>
     <div style={{fontSize:18,fontWeight:700}}>Players List</div>
